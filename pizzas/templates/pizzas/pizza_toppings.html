@@ -1,27 +1,26 @@
+{% extends "pizzas/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ pizza.name }} - Topping</title>
 </head>
-
 <body>
-    {% extends "pizzas/base.html" %}
+   
 
     {% block content %}
-    <p>Pizza type</p>
+    <p>{{ pizza }}</p>
+    <p>Toppings:</p>
     <ul>
-        {% for pizza in pizzas %}
+        {% for topping in toppings %}
         <li>
-            <a href="{% url 'pizzas:toppings' pizza.id %}"> {{ pizza }}</a>
+            <p>{{ topping }}</p>
         </li>
         {% empty %}
-        <li>No pizzas available.</li>
+        <li>There are no toppings for this pizza yet</li>
         {% endfor %}
     </ul>
     {% endblock content %}
 </body>
-
 </html>

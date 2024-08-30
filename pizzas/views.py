@@ -16,4 +16,8 @@ def pizzas(request):
 def toppings(request, pizza_id):
     """Show the toppings for the pizzas."""
     pizza = Pizza.objects.get(id=pizza_id)
+    toppings = Topping.objects.filter(pizza=pizza)
+    context = {'pizza':pizza, 'toppings': toppings}
+    return render(request, 'pizzas/pizza_toppings.html', context)
+
 
