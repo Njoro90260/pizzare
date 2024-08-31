@@ -1,24 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "pizzas/base.html" %}
+
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pizzas</title>
 </head>
 
 <body>
-    {% extends "pizzas/base.html" %}
+    {% block page_header %}
+    <h1>Pizza type</h1>
+    {% endblock page_header %}
 
     {% block content %}
-    <p>Pizza type</p>
+    <p></p>
     <ul>
         {% for pizza in pizzas %}
         <li>
-            <a href="{% url 'pizzas:toppings' pizza.id %}"> {{ pizza }}</a>
+            <h3>
+                <a href="{% url 'pizzas:toppings' pizza.id %}"> {{ pizza }}</a>
+            </h3>
         </li>
         {% empty %}
-        <li>No pizzas available.</li>
+        <li>
+            <h3>
+                No pizzas available.
+            </h3>
+        </li>
         {% endfor %}
     </ul>
     {% endblock content %}

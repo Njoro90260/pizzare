@@ -1,26 +1,28 @@
 {% extends "pizzas/base.html" %}
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pizza.name }} - Topping</title>
 </head>
+
 <body>
-   
+    {% block page_header %}
+    <h1>{{ pizza }}</h1>
+    <h2>Toppings: </h2>
+    {% endblock page_header %}
 
     {% block content %}
-    <p>{{ pizza }}</p>
-    <p>Toppings:</p>
     <ul>
         {% for topping in toppings %}
         <li>
-            <p>{{ topping }}</p>
+            <h3>{{ topping }}</h3>
         </li>
         {% empty %}
-        <li>There are no toppings for this pizza yet</li>
+        <li>
+            <h3>There are no toppings for this pizza yet</h3>
+        </li>
         {% endfor %}
     </ul>
     {% endblock content %}
 </body>
+
 </html>
